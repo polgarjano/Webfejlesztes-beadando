@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th class="column">Rendszám</th>
+        <th class="column">Munka leírása</th>
+        <th class="column">Munka kezdete</th>
+        <th class="column">Elkészült</th>
+        <th class="column">Szerelő</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="job : ${jobsList}">
+        <td class="user" th:text="${job.licensePlate}"></td>
+        <td class="user" th:text="${job.content}"></td>
+        <td class="user" th:text="${job.startTime}"></td>
+        <td th:text="${job.isFinished} ? 'Yes' : 'No'">
+        <td class="user" th:text="${job.user?.name}"></td>
+        <td  th:href="@{/job/{id}(id=${job.id})}">
+            <a th:href="@{/job/{id}(id=${job.id})}">Informazió</a>
+        </td>
+
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:text="${appUser.name}">Name</div>
+<a th:href="@{/Workers/addJob/{userId}(userId=${appUser.id})}">Munka ki választása</a>
+<form action="#" th:action="@{/Workers/delet/}" th:object="${appUser}" method="post">
+    <input type="hidden" id="number" th:field="*{Id}"><br>
+    <input type="submit" value="törlés">
+
+</form>
+<form action="#" th:action="@{/updateWorker/{userId}(userId=${appUser.id})}" th:object="${appUser}" method="get">
+   <!-- <input type="hidden" id="number" th:field="*{Id}"><br>-->
+    <input type="submit" value="update">
+
+</form>
+<table>
+    <thead>
+    <tr>
+        <th class="column">Rendszám</th>
+        <th class="column">Munka leírása</th>
+        <th class="column">Munka kezdete</th>
+        <th class="column">Elkészült</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="job : ${appUser.jobList}">
+        <td class="user" th:text="${job.licensePlate}"></td>
+        <td class="user" th:text="${job.content}"></td>
+        <td class="user" th:text="${job.startTime}"></td>
+        <td th:text="${job.isFinished} ? 'Yes' : 'No'">
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+ <html lang="en"
+            xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/Workers}" th:object="${user}" method="post">
+    <input type="hidden" id="number" th:field="*{Id}"><br>
+    <label>Felhasználónév:</label><br>
+    <input type="text"  th:field="*{UserName}"><br>
+    <label>Jelszó:</label><br>
+    <input type="text" th:field="*{EncryptedPassword}"><br>
+    <label>Admin:</label>
+    <input type="checkbox" th:field="*{IsAdmin}"><br>
+    <label>User:</label>
+    <input type="checkbox" th:field="*{IsUser}"><br>
+    <label>Név:</label><br>
+    <input type="text" th:field="*{Name}"><br>
+
+    <input type="submit" value="Hozzáadás">
+    <input type="reset" value="Visszaállítás">
+</form>
+
+</body>
+</html>

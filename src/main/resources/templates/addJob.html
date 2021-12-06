@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/jobs}" th:object="${job}" method="post">
+    <input type="hidden" id="number" th:field="*{Id}"><br>
+    <label>Rendszám:</label><br>
+    <input type="text"  th:field="*{licensePlate}"><br>
+    <label>Leírás:</label><br>
+    <input type="text" th:field="*{content}"><br>
+    <label>Kész van-e?</label>
+    <input type="checkbox" th:field="*{isFinished}"><br>
+    <label>Munka felvételének idő pontja:</label>
+    <input type="date" th:field="*{startTime}"><br>
+
+
+    <input type="submit" value="Hozzáadás">
+    <input type="reset" value="Visszaállítás">
+</form>
+
+</body>
+</html>

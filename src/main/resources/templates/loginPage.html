@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form id="login" name='f' th:action="@{/j_spring_security_check}" method='POST'>
+    <h3>Bejelentkezés</h3>
+
+    <label for="Uname">Felhasználónév</label>
+    <input type="text" name="username" placeholder="Felhasználónév" id="Uname" value='' required>
+
+    <label for="Pass">Jelszó</label>
+    <input type="password" name="password" placeholder="Jelszó" id="Pass" value='' required>
+
+    <input type="submit" name="submit" id="log" value="Bejelentkezés">
+
+    <!-- /login?error=true -->
+    <div th:if="${#request.getParameter('error') == 'true'}"><br/>
+        <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+              th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}" style="color:red;margin-left: auto; margin-right: auto;">
+                Static summary
+         </span>
+    </div>
+</form>
+
+
+</body>
+
+</html>
